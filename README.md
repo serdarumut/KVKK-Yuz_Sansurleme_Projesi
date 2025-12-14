@@ -1,4 +1,4 @@
-# Yüz Tespiti ve Sansürleme Projesi (Face Blurring) 🕵️‍♂️
+# Yüz Tespiti ve Sansürleme Projesi (Face Blurring) 
 
 Görüntü işleme dersi için hazırladığım bu proje, yüklenen fotoğraflardaki kişilerin yüzlerini bulup otomatik olarak gizler. Özellikle sosyal medyada veya veri setlerinde kişisel gizliliği korumak amacıyla geliştirdim.
 
