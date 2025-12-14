@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yüz Sansürleme Sistemi</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; text-align: center; padding: 50px; }
+        .container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        p { color: #7f8c8d; }
+        input[type="file"] { margin: 20px 0; padding: 10px; border: 1px dashed #ccc; width: 80%; }
+        button { background-color: #3498db; color: white; border: none; padding: 12px 25px; cursor: pointer; font-size: 16px; border-radius: 8px; transition: 0.3s; }
+        button:hover { background-color: #2980b9; }
+        
+        .result { margin-top: 30px; animation: fadeIn 0.5s; }
+        img { max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 1px solid #ddd; margin-top: 10px; }
+        
+        /* Yeni Uyarı Kutusu Tasarımı */
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Yüz Sansürleme Sistemi </h1>
+        <p>Yapay zeka destekli yüz sansürleme sistemi </p>
+        
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="dosya" required accept="image/*">
+            <br>
+            <button type="submit"> Analiz Et ve Sansürle</button>
+        </form>
+
+        {% if uyari_mesaji %}
+        <div class="alert">
+             {{ uyari_mesaji }}
+        </div>
+        {% endif %}
+
+        {% if goster_resim %}
+        <div class="result">
+            <h3> Güvenli Hale Getirilmiş Resim:</h3>
+            <img src="{{ url_for('static', filename=goster_resim) }}" alt="Sansurlu Resim">
+            <br><br>
+            <a href="{{ url_for('static', filename=goster_resim) }}" download>
+                <button style="background-color: #27ae60;"> Resmi İndir</button>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
